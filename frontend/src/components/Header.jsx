@@ -18,7 +18,7 @@ const Header = ()=>{
                     <ul className="hidden lg:flex  space-x-12 justify-center">
                         <li><a href="/" className="hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text" >home</a></li>
                         <li><a href="/about" className="hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text" >about</a></li>
-                        <li><a href="/contect" className="hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text" >contact</a></li>
+                        <li><a href="/contact" className="hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text" >contact</a></li>
                     </ul>
                     <div className="hidden lg:flex justify-center space-x-12 items-center">
                         <Link to='/articles' className="py-2 px-3 border rounded-md bg-slate-400">Articles</Link>
@@ -35,7 +35,7 @@ const Header = ()=>{
                         <ul>
                         <li className="py-4 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text"><a href="/" >home</a></li>
                         <li className="py-4 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text"><a href="/about" >about</a></li>
-                        <li className="py-4 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text"><a href="/contect" >contact</a></li>
+                        <li className="py-4 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text"><a href="/contact" >contact</a></li>
                         </ul>
                         <div className="flex space-x-6">
                         <Link to='/articles' className="py-2 px-3 border rounded-md bg-slate-400">Articles</Link>
