@@ -14,7 +14,7 @@ const Hero = () => {
                 </span>
             </h1>
             <p className="mt-10 text-lg text-center text-wrap max-w-4xl">
-                Marginalized communities face significant hurdles, primarily due to a
+                Marginalized communities face significant hurdles, primarily due to a 
                 fundamental lack of awareness and access to information. The digital divide and language barriers further
                 restrict their participation, creating a cascading effect that limits broader societal involvement.
                 Addressing these challenges is crucial for creating a more inclusive and equitable future.            </p>
