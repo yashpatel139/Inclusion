@@ -10,25 +10,26 @@ import ForgotPassword from './components/ForgotPassword';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
+  // Ensure you are checking the environment variable correctly
+  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
   return (
-    <>
-       <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-    <div className='nav-router bg-indigo-300'>
+    <GoogleOAuthProvider clientId={googleClientId}>
+      <div className='nav-router bg-indigo-300'>
         <BrowserRouter>
-          <Header/>
+          <Header />
           <Routes>
-            <Route path="/" element={<Hero/>} />
-            <Route path="/contact" element={<Contact/>} />
-            <Route path="/about" element={<About/>}/>
-              <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Hero />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
           </Routes>
         </BrowserRouter>
       </div>
-    </>
-  )
+    </GoogleOAuthProvider>
+  );
 }
 
-export default App
+export default App;
