@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import ForgotPassword from './components/ForgotPassword';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import Articles from './components/Articles';
 
 function App() {
   // Ensure you are checking the environment variable correctly
@@ -25,6 +26,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path='/articles' element={<Articles/>}/>
           </Routes>
         </BrowserRouter>
       </div>
