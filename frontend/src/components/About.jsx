@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const fadeIn = {
@@ -22,7 +22,7 @@ const About = () => {
         <div>
             {/* Our Vision Section */}
             <section className="h-screen flex items-center bg-blue-50 py-16 px-6">
-                <div className="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
+                <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
                     <motion.div 
                         className="md:w-1/2 text-left"
                         variants={fadeIn}
@@ -31,7 +31,18 @@ const About = () => {
                         transition={{ duration: 1 }}
                         ref={visionRef}
                     >
-                        <h2 className="text-5xl font-bold text-blue-800 mb-6 leading-tight">Our Vision</h2>
+                        <h2 className="text-5xl font-bold text-blue-800 mb-6 leading-tight">
+                            Our Vision
+                            <motion.img 
+                                src="vis.jpg" 
+                                alt="Vision Logo" 
+                                className="inline-block w-16 h-16 rounded-full object-cover shadow-xl border-4 border-blue-200 ml-4 mb-4 "
+                                variants={fadeIn}
+                                initial="hidden"
+                                animate={visionInView ? "visible" : "hidden"}
+                                transition={{ duration: 1, delay: 0.3 }}
+                            />
+                        </h2>
                         <p className="text-lg text-gray-600 leading-relaxed">
                             We aim to bridge gaps for marginalized communities by streamlining access to vital government schemes, donation opportunities, and NGO support. By consolidating social work resources and overcoming barriers like digital divides and language constraints, we strive to empower individuals and foster a more inclusive and equitable future.
                         </p>
@@ -60,7 +71,18 @@ const About = () => {
                         transition={{ duration: 1 }}
                         ref={whatWeDoRef}
                     >
-                        <h2 className="text-5xl font-bold text-blue-800 mb-6 leading-tight">What We Do</h2>
+                        <h2 className="text-5xl font-bold text-blue-800 mb-6 leading-tight">
+                            What We Do
+                            <motion.img 
+                                src="we.jpg" 
+                                alt="What We Do Logo" 
+                                className="inline-block w-16 h-16 rounded-full object-cover shadow-lg border-4 border-blue-200 ml-4 mb-4"
+                                variants={fadeIn}
+                                initial="hidden"
+                                animate={whatWeDoInView ? "visible" : "hidden"}
+                                transition={{ duration: 1, delay: 0.3 }}
+                            />
+                        </h2>
                         <div className="space-y-6">
                             {[
                                 { number: 1, title: "Easy Access to Information", description: "We streamline access to crucial information, making it straightforward for marginalized communities to locate necessary resources." },
@@ -118,6 +140,10 @@ const About = () => {
                                 { title: "Community Help", description: "Opportunities for volunteering and donating, plus a forum for sharing stories and advice.", path: "comh.jpg" },
                                 { title: "Multilingual Support", description: "Support for multiple languages to overcome language barriers.", path: "mul.webp" },
                                 { title: "Real-time Communication", description: "Real-time communication tools to connect with support services.", path: "real.webp" },
+                                { title: "Skill Development", description: "Access to online courses, workshops, and training programs aimed at enhancing skills and improving employability for marginalized communities.", path: "skill.jpg" },
+                                { title: "Personalized Recommendations", description: "Customized resource suggestions based on user profiles and needs, ensuring relevant support and information are easily accessible.", path: "prec.png" },
+                                { title: "Localized Services", description: "Information on local services and support tailored to specific regions, ensuring that users find resources close to their location.", path: "loc.jpg" },
+                                
                             ].map((feature, index) => (
                                 <motion.div 
                                     className="bg-white p-6 rounded-lg shadow-md border border-gray-300"
