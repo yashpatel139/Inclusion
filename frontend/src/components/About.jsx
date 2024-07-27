@@ -21,62 +21,62 @@ const About = () => {
     return (
         <div>
             {/* Our Vision Section */}
-            <section className="h-screen flex items-center bg-blue-50 py-16 px-6">
+            <section className="flex items-center bg-blue-50 py-16 px-6 min-h-screen">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
                     <motion.div 
-                        className="md:w-1/2 text-left"
+                        className="md:w-1/2 text-left mb-8 md:mb-0"
                         variants={fadeIn}
                         initial="hidden"
                         animate={visionInView ? "visible" : "hidden"}
                         transition={{ duration: 1 }}
                         ref={visionRef}
                     >
-                        <h2 className="text-5xl font-bold text-blue-800 mb-6 leading-tight">
+                        <h2 className="text-3xl md:text-5xl font-bold text-blue-800 mb-6 leading-tight">
                             Our Vision
                             <motion.img 
                                 src="vis.jpg" 
                                 alt="Vision Logo" 
-                                className="inline-block w-16 h-16 rounded-full object-cover shadow-xl border-4 border-blue-200 ml-4 mb-4 "
+                                className="inline-block w-12 h-12 md:w-16 md:h-16 rounded-full object-cover shadow-xl border-4 border-blue-200 ml-4 mb-4 "
                                 variants={fadeIn}
                                 initial="hidden"
                                 animate={visionInView ? "visible" : "hidden"}
                                 transition={{ duration: 1, delay: 0.3 }}
                             />
                         </h2>
-                        <p className="text-lg text-gray-600 leading-relaxed">
+                        <p className="text-base md:text-lg text-gray-600 leading-relaxed">
                             We aim to bridge gaps for marginalized communities by streamlining access to vital government schemes, donation opportunities, and NGO support. By consolidating social work resources and overcoming barriers like digital divides and language constraints, we strive to empower individuals and foster a more inclusive and equitable future.
                         </p>
                     </motion.div>
                     <motion.div 
-                        className="md:w-1/2 mt-8 md:mt-0 flex justify-center"
+                        className="md:w-1/2 flex justify-center"
                         variants={fadeIn}
                         initial="hidden"
                         animate={visionInView ? "visible" : "hidden"}
                         transition={{ duration: 1, delay: 0.5 }}
                         ref={visionRef}
                     >
-                        <img src="incl.avif" alt="Our Vision" className="w-64 h-64 rounded-full object-cover shadow-xl border-4 border-blue-200" />
+                        <img src="incl.avif" alt="Our Vision" className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-blue-200" />
                     </motion.div>
                 </div>
             </section>
 
             {/* What We Do Section */}
-            <section className="h-screen flex items-center bg-white py-12 px-6">
+            <section className="flex items-center bg-white py-12 px-6 min-h-screen">
                 <div className="container mx-auto flex flex-col md:flex-row-reverse items-center justify-between">
                     <motion.div 
-                        className="md:w-1/2 text-left"
+                        className="md:w-1/2 text-left mb-8 md:mb-0"
                         variants={fadeIn}
                         initial="hidden"
                         animate={whatWeDoInView ? "visible" : "hidden"}
                         transition={{ duration: 1 }}
                         ref={whatWeDoRef}
                     >
-                        <h2 className="text-5xl font-bold text-blue-800 mb-6 leading-tight">
+                        <h2 className="text-3xl md:text-5xl font-bold text-blue-800 mb-6 leading-tight">
                             What We Do
                             <motion.img 
                                 src="we.jpg" 
                                 alt="What We Do Logo" 
-                                className="inline-block w-16 h-16 rounded-full object-cover shadow-lg border-4 border-blue-200 ml-4 mb-4"
+                                className="inline-block w-12 h-12 md:w-16 md:h-16 rounded-full object-cover shadow-lg border-4 border-blue-200 ml-4 mb-4"
                                 variants={fadeIn}
                                 initial="hidden"
                                 animate={whatWeDoInView ? "visible" : "hidden"}
@@ -100,22 +100,22 @@ const About = () => {
                                 >
                                     <div className="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">{item.number}</div>
                                     <div>
-                                        <h3 className="text-xl font-semibold text-gray-800">{item.title}</h3>
-                                        <p className="text-lg text-gray-700">{item.description}</p>
+                                        <h3 className="text-lg md:text-xl font-semibold text-gray-800">{item.title}</h3>
+                                        <p className="text-base md:text-lg text-gray-700">{item.description}</p>
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
                     </motion.div>
                     <motion.div 
-                        className="md:w-1/2 mt-4 md:mt-0 flex justify-center"
+                        className="md:w-1/2 flex justify-center"
                         variants={fadeIn}
                         initial="hidden"
                         animate={whatWeDoInView ? "visible" : "hidden"}
                         transition={{ duration: 1, delay: 0.5 }}
                         ref={whatWeDoRef}
                     >
-                        <img src="do.png" alt="What We Do" className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-blue-200" />
+                        <img src="do.png" alt="What We Do" className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-lg border-4 border-blue-200" />
                     </motion.div>
                 </div>
             </section>
@@ -143,18 +143,17 @@ const About = () => {
                                 { title: "Skill Development", description: "Access to online courses, workshops, and training programs aimed at enhancing skills and improving employability for marginalized communities.", path: "skill.jpg" },
                                 { title: "Personalized Recommendations", description: "Customized resource suggestions based on user profiles and needs, ensuring relevant support and information are easily accessible.", path: "prec.png" },
                                 { title: "Localized Services", description: "Information on local services and support tailored to specific regions, ensuring that users find resources close to their location.", path: "loc.jpg" },
-                                
                             ].map((feature, index) => (
                                 <motion.div 
-                                    className="bg-white p-6 rounded-lg shadow-md border border-gray-300"
+                                    className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300"
                                     key={index}
                                     variants={scaleUp}
                                     initial="hidden"
                                     animate={featuresInView ? "visible" : "hidden"}
                                     transition={{ duration: 1, delay: index * 0.2 }}
                                 >
-                                    <img src={feature.path} className="w-full h-32 object-cover rounded-md mb-4" />
-                                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                                    <img src={feature.path} alt={feature.title} className="w-full h-40 object-cover rounded-md mb-4" />
+                                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
                                     <p className="text-gray-700">{feature.description}</p>
                                 </motion.div>
                             ))}
