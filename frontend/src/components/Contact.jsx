@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+  import { useForm, Controller } from 'react-hook-form';
+  import { yupResolver } from '@hookform/resolvers/yup';
+  import * as yup from 'yup';
+  import { useForm as useFormspree } from '@formspree/react';
+  
+  
 
 const stateDistrictData = {  
     "states":[  
@@ -905,6 +908,8 @@ const stateDistrictData = {
     ]
   }
 
+  
+  
   const schema = yup.object({
     name: yup.string().required('Name is required'),
     emailid: yup.string().email('Invalid email address').required('Email is required'),
@@ -921,8 +926,9 @@ const stateDistrictData = {
     const [districts, setDistricts] = useState([]);
     const [selectedState, setSelectedState] = useState("");
   
-    // Initialize react-hook-form with Yup schema
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm({
+    const [state, handleSubmitForm] = useFormspree("mvgpkjze"); // Replace with your Formspree ID
+  
+    const { control, handleSubmit, setValue, reset, formState: { errors } } = useForm({
       resolver: yupResolver(schema),
     });
   
@@ -935,110 +941,101 @@ const stateDistrictData = {
       setValue('district', ''); // Reset district when state changes
     };
   
-    const onSubmit = (data) => {
-      // Handle form submission here
-      console.log(data);
-      alert('Your message has been sent');
+    const onSubmit = async (data) => {
+      try {
+        await handleSubmitForm(data); // Submit form data to Formspree
+        alert('Your message has been sent');
+        reset(); // Reset form fields
+      } catch (error) {
+        console.error('Error submitting form', error);
+      }
     };
   
     return (
       <div className="container mx-auto px-4 py-6 max-w-md">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-semibold">Contact Us</h2>
-          <p className="text-lg text-gray-700">Get in touch with us. We are always here to help you.</p>
+          <p className="text-lg text-gray-700">Get in touch with us using the form below.</p>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} id="contact" className="space-y-6">
-          <div className="bg-green-100 text-green-700 p-4 rounded hidden">
-            Your message has been sent
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+            <Controller
+              name="name"
+              control={control}
+              render={({ field }) => <input id="name" {...field} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg" />}
+            />
+            <p className="text-red-600">{errors.name?.message}</p>
           </div>
-  
-          <div className="space-y-4">
-            <div>
-              <input
-                type="text"
-                id="name"
-                placeholder="Your name...."
-                {...register('name')}
-                className="w-full p-2 border border-gray-300 rounded"
-              />
-              {errors.name && <p className="text-red-500">{errors.name.message}</p>}
-            </div>
-  
-            <div>
-              <input
-                type="email"
-                id="emailid"
-                placeholder="Your Email....."
-                {...register('emailid')}
-                className="w-full p-2 border border-gray-300 rounded"
-              />
-              {errors.emailid && <p className="text-red-500">{errors.emailid.message}</p>}
-            </div>
-  
-            <div>
-              <input
-                type="text"
-                id="phone"
-                placeholder="Your Phone Number....."
-                {...register('phone')}
-                className="w-full p-2 border border-gray-300 rounded"
-              />
-              {errors.phone && <p className="text-red-500">{errors.phone.message}</p>}
-            </div>
-  
-            <div>
-              <select
-                id="state"
-                {...register('state')}
-                onChange={handleStateChange}
-                className="w-full p-2 border border-gray-300 rounded"
-              >
-                <option value="">Select State</option>
-                {states.map((state, index) => (
-                  <option key={index} value={state.state}>{state.state}</option>
-                ))}
-              </select>
-              {errors.state && <p className="text-red-500">{errors.state.message}</p>}
-            </div>
-  
-            <div>
-              <select
-                id="district"
-                {...register('district')}
-                className="w-full p-2 border border-gray-300 rounded"
-              >
-                <option value="">Select District</option>
-                {districts.map((district, index) => (
-                  <option key={index} value={district}>{district}</option>
-                ))}
-              </select>
-              {errors.district && <p className="text-red-500">{errors.district.message}</p>}
-            </div>
-  
-            <div>
-              <textarea
-                rows="6"
-                id="msgContent"
-                placeholder="Your message...."
-                {...register('msgContent')}
-                className="w-full p-2 border border-gray-300 rounded"
-              />
-              {errors.msgContent && <p className="text-red-500">{errors.msgContent.message}</p>}
-            </div>
+          <div>
+            <label htmlFor="emailid" className="block text-sm font-medium text-gray-700">Email</label>
+            <Controller
+              name="emailid"
+              control={control}
+              render={({ field }) => <input id="emailid" {...field} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg" />}
+            />
+            <p className="text-red-600">{errors.emailid?.message}</p>
           </div>
-  
-          <button
-            type="submit"
-            className="w-full p-3 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-            Send Message
-          </button>
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
+            <Controller
+              name="phone"
+              control={control}
+              render={({ field }) => <input id="phone" {...field} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg" />}
+            />
+            <p className="text-red-600">{errors.phone?.message}</p>
+          </div>
+          <div>
+            <label htmlFor="state" className="block text-sm font-medium text-gray-700">State</label>
+            <Controller
+              name="state"
+              control={control}
+              render={({ field }) => (
+                <select id="state" {...field} onChange={(e) => {
+                  field.onChange(e);
+                  handleStateChange(e);
+                }} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg">
+                  <option value="">Select a state</option>
+                  {states.map((st, index) => (
+                    <option key={index} value={st.state}>{st.state}</option>
+                  ))}
+                </select>
+              )}
+            />
+            <p className="text-red-600">{errors.state?.message}</p>
+          </div>
+          <div>
+            <label htmlFor="district" className="block text-sm font-medium text-gray-700">District</label>
+            <Controller
+              name="district"
+              control={control}
+              render={({ field }) => (
+                <select id="district" {...field} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg">
+                  <option value="">Select a district</option>
+                  {districts.map((district, index) => (
+                    <option key={index} value={district}>{district}</option>
+                  ))}
+                </select>
+              )}
+            />
+            <p className="text-red-600">{errors.district?.message}</p>
+          </div>
+          <div>
+            <label htmlFor="msgContent" className="block text-sm font-medium text-gray-700">Message</label>
+            <Controller
+              name="msgContent"
+              control={control}
+              render={({ field }) => (
+                <textarea id="msgContent" {...field} rows="4" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg"></textarea>
+              )}
+            />
+            <p className="text-red-600">{errors.msgContent?.message}</p>
+          </div>
+          <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600">Send Message</button>
         </form>
       </div>
     );
   };
   
   export default ContactForm;
-// export default Contact;
-
-
+  
