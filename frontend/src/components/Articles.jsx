@@ -88,64 +88,64 @@ const Articles = () => {
                 ref={articlesRef}
             >
                 <h1 className="text-center text-5xl font-bold mb-8" style={{ fontFamily: 'Arial, sans-serif' }}>Top Articles</h1>
-                
+
                 <div className="relative w-full mb-6">
-    <input
-        type="text"
-        placeholder="Search articles..."
-        className="w-full p-4 pr-12 border rounded"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-    />
-    <svg
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M21 21l-4.35-4.35M16.35 11.65a6.5 6.5 0 1 0-9.2-9.2 6.5 6.5 0 0 0 9.2 9.2z"
-        />
-    </svg>
-</div>
+                    <input
+                        type="text"
+                        placeholder="Search articles..."
+                        className="w-full p-4 pr-12 border rounded"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    <svg
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M21 21l-4.35-4.35M16.35 11.65a6.5 6.5 0 1 0-9.2-9.2 6.5 6.5 0 0 0 9.2 9.2z"
+                        />
+                    </svg>
+                </div>
 
 
                 {/* Show top article only if there's no search query */}
                 {!searchQuery && (
-            <div className="flex flex-col md:flex-row bg-white border-2 border-blue-50 rounded-lg overflow-hidden shadow-lg mb-8">
-                <div className="md:w-1/2 p-4">
-                    <img
-                        src={articles[0].image}
-                        alt={articles[0].title}
-                        className="w-full object-cover object-center h-64 md:h-auto border border-gray-300 rounded-md"
-                    />
-                </div>
-                <div className="p-6 flex flex-col justify-center md:w-1/2">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">{articles[0].title}</h2>
-                    <p className="text-gray-700 mb-4">
-                        {articles[0].description.length > 100 
-                            ? `${articles[0].description.substring(0, 300)}...` 
-                            : articles[0].description
-                        }
-                    </p>
-                    <span className="text-gray-500 mb-4 block">{articles[0].date} • {articles[0].author}</span>
-                    <button 
-                        className="text-blue-500 hover:underline mt-2"
-                        onClick={() => setSelectedArticle(articles[0])}
-                    >
-                        Read More
-                    </button>
-                </div>
-            </div>
-        )}
-        
-        
-                        {/* Trending Articles */}
-                        <h2 className="text-4xl font-bold text-gray-900 mb-6">Trending Articles</h2>
+                    <div className="flex flex-col md:flex-row bg-white border-2 border-blue-50 rounded-lg overflow-hidden shadow-lg mb-8">
+                        <div className="md:w-1/2 p-4">
+                            <img
+                                src={articles[0].image}
+                                alt={articles[0].title}
+                                className="w-full object-cover object-center h-64 md:h-auto border border-gray-300 rounded-md"
+                            />
+                        </div>
+                        <div className="p-6 flex flex-col justify-center md:w-1/2">
+                            <h2 className="text-3xl font-bold text-gray-900 mb-4">{articles[0].title}</h2>
+                            <p className="text-gray-700 mb-4">
+                                {articles[0].description.length > 100
+                                    ? `${articles[0].description.substring(0, 300)}...`
+                                    : articles[0].description
+                                }
+                            </p>
+                            <span className="text-gray-500 mb-4 block">{articles[0].date} • {articles[0].author}</span>
+                            <button
+                                className="text-blue-500 hover:underline mt-2"
+                                onClick={() => setSelectedArticle(articles[0])}
+                            >
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                )}
+
+
+                {/* Trending Articles */}
+                <h2 className="text-4xl font-bold text-gray-900 mb-6">Trending Articles</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredArticles.map((article, index) => (
                         <motion.div
@@ -163,51 +163,51 @@ const Articles = () => {
                                 {article.description.length > 100 ? `${article.description.substring(0, 100)}...` : article.description}
                             </p>
                             <div className="flex justify-between">
-                            <span className="text-gray-500 mb-2">{article.date} • {article.author}</span>
-                            <button 
-                                className="text-blue-500 hover:underline"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedArticle(article);
-                                }}
-                            >
-                                   Read More
-                               </button>
-                           </div>
-                           
+                                <span className="text-gray-500 mb-2">{article.date} • {article.author}</span>
+                                <button
+                                    className="text-blue-500 hover:underline"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedArticle(article);
+                                    }}
+                                >
+                                    Read More
+                                </button>
+                            </div>
+
                         </motion.div>
                     ))}
                 </div>
             </motion.div>
 
             <Modal
-    isOpen={!!selectedArticle}
-    onRequestClose={() => setSelectedArticle(null)}
-    contentLabel="Article Details"
-    className="fixed inset-0 flex items-center justify-center z-50 outline-none p-4"
-    overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-40"
-    ariaHideApp={false}
->
-    {selectedArticle && (
-        <div className="relative bg-white rounded-lg overflow-hidden shadow-lg w-full max-w-3xl p-6 mx-4 sm:mx-8 lg:mx-12 h-[75vh] overflow-y-auto">
-            <button 
-                className="absolute top-4 right-4 bg-gray-900 text-white rounded-full p-4 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-                onClick={() => setSelectedArticle(null)}
-                aria-label="Close"
+                isOpen={!!selectedArticle}
+                onRequestClose={() => setSelectedArticle(null)}
+                contentLabel="Article Details"
+                className="fixed inset-0 flex items-center justify-center z-50 outline-none p-4"
+                overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-40"
+                ariaHideApp={false}
             >
-              <span className=''>&times;</span>  
-            </button>
-            <img 
-                src={selectedArticle.image} 
-                alt={selectedArticle.title} 
-                className="w-full h-80 object-cover border border-gray-300 mb-4"
-            />
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{selectedArticle.title}</h2>
-            <span className="text-gray-500">{selectedArticle.date} • {selectedArticle.author}</span>
-            <p className="text-gray-700 mt-4">{selectedArticle.description}</p>
-        </div>
-    )}
-</Modal>
+                {selectedArticle && (
+                    <div className="relative bg-white rounded-lg overflow-hidden shadow-lg w-full max-w-3xl p-6 mx-4 sm:mx-8 lg:mx-12 h-[75vh] overflow-y-auto">
+                        <button
+                            className="absolute top-4 right-4 bg-gray-900 text-white rounded-full p-4 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                            onClick={() => setSelectedArticle(null)}
+                            aria-label="Close"
+                        >
+                            <span className=''>&times;</span>
+                        </button>
+                        <img
+                            src={selectedArticle.image}
+                            alt={selectedArticle.title}
+                            className="w-full h-80 object-cover border border-gray-300 mb-4"
+                        />
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">{selectedArticle.title}</h2>
+                        <span className="text-gray-500">{selectedArticle.date} • {selectedArticle.author}</span>
+                        <p className="text-gray-700 mt-4">{selectedArticle.description}</p>
+                    </div>
+                )}
+            </Modal>
 
 
         </div>
