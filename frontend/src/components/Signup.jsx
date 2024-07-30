@@ -35,10 +35,12 @@ const Signup = () => {
       });
 
       const result = await response.json();
-
-        
-        setSuccess(result.message);
       
+      if (response.ok) {
+        setSuccess(result.message);
+      } else {
+        setError(result.message);
+      }
       
     } catch (error) {
       console.error('Error signing up:', error);
@@ -49,13 +51,18 @@ const Signup = () => {
   };
 
   return (
-    <div className="relative flex h-screen items-center justify-center bg-cover bg-center" style={{ backgroundImage: 'url(/login1.jpg)' }}>
+    <div className="relative flex h-screen items-center justify-center bg-cover bg-center" style={{ backgroundImage: 'url(/login3.jpg)' }}>
       <div className="absolute inset-0 bg-black opacity-40"></div> {/* Darker Overlay */}
-      <div className="relative w-full max-w-md p-8 bg-white bg-opacity-20 rounded-lg shadow-lg">
+      <div className="relative w-full max-w-md p-8 bg-white bg-opacity-70 rounded-lg shadow-lg">
         {/* Logo Image */}
         <div className="mb-4 flex justify-center">
-          <img src={logo} alt="Signup logo" className="h-16 w-16" />
+          <img
+            src="https://th.bing.com/th/id/OIP.VBYvbPBeY-IRDIC4GD2aCgHaE4?w=260&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+            alt="Signup logo"
+            className="w-28 h-18 rounded-l-full rounded-r-full object-cover" // Adjust size and rounded corners
+          />
         </div>
+
         <h2 className="text-2xl font-bold mb-6 text-center text-black">Signup</h2>
         {error && <p className="text-red-600 text-center mb-4">{error}</p>}
         {success && <p className="text-green-600 text-center mb-4">{success}</p>}

@@ -12,8 +12,9 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-r from-indigo-200 via-indigo-300 to-purple-300">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+    <div className="relative flex h-screen items-center justify-center bg-cover bg-center" style={{ backgroundImage: 'url(/login3.jpg)' }}>
+      <div className="absolute inset-0 bg-black opacity-40"></div> {/* Darker Overlay */}
+      <div className="relative w-full max-w-md p-8 bg-white bg-opacity-70 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Forgot Password</h2>
         <form onSubmit={handleForgotPassword} className="space-y-4">
           <div>
