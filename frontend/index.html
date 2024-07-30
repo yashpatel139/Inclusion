@@ -9,6 +9,13 @@
   <script src="https://widget.cxgenie.ai/widget.js" data-aid="2c60b098-ff5c-4560-879a-a3c4c6b7700a" data-lang="en"></script>
   <body>
     <div id="root"></div>
+    <div id="google_translate_element"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
   </body>
 </html>
