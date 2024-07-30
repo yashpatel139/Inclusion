@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Body.css'; // Import your CSS file
 
 const cardData = [
@@ -38,7 +38,7 @@ const cardData = [
     link: 'https://www.sewa.org/',
     funders: ['Ford Foundation', 'Government Grants'],
     image: '/sewa.jpg',
-    details: 'SEWA supports women working in the informal sector by offering them opportunities for self-employment and improving their working conditions. They focus on increasing the income and status of women.',
+    details: 'SEWA supports women working in the informal sector by offering them opportunities for self-employment and improving their working conditions. They focus on increasing the income and status of women.SEWA provides vocational training, access to financial services.',
     impact: 'Over 2 million women empowered through various programs.',
     contact: 'For inquiries, email: sewa@sewa.org',
   },
@@ -48,10 +48,11 @@ const cardData = [
     link: 'https://www.undp.org/',
     funders: ['Government Contributions', 'Private Sector Partnerships'],
     image: '/undp.jpg',
-    details: 'The UNDP works to eradicate poverty and reduce inequalities by fostering sustainable development. Their initiatives often target marginalized communities to improve their access to resources, education, and economic opportunities.',
-    impact: 'Supports various projects globally focused on poverty reduction, crisis recovery, and sustainable development.',
+    details: 'The UNDP works to eradicate poverty and reduce inequalities by fostering sustainable development. Their initiatives often target marginalized communities to improve access to resources and economic opportunities.',
+    impact: 'Supports various projects focused on poverty reduction, crisis recovery, and sustainable development.',
     contact: 'For inquiries, email: undp@undp.org',
   },
+  
   {
     title: 'United Nations Children’s Fund (UNICEF)',
     description: 'Protecting the rights and well-being of children.',
@@ -64,45 +65,28 @@ const cardData = [
   }
 ];
 
-
 const Body = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handlePrev = () => {
-    setCurrentIndex(prevIndex => (prevIndex > 0 ? prevIndex - 1 : cardData.length - 3));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex(prevIndex => (prevIndex < cardData.length - 3 ? prevIndex + 1 : 0));
-  };
-
   return (
     <div className="p-8 bg-gray-200">
       <h1 className="text-4xl font-bold mb-6 text-center">NGOs and UN Programs</h1>
-      <div className="carousel-container">
-        <button className="carousel-button prev" onClick={handlePrev}>‹</button>
-        <div className="carousel-wrapper">
-          <div className="carousel-inner" style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}>
-            {cardData.map((card, idx) => (
-              <div key={idx} className="card">
-                <div className="card-image-container">
-                  <img src={card.image} alt={card.title} className="card-image" />
-                </div>
-                <div className="card-content">
-                  <h2 className="card-title">{card.title}</h2>
-                  <p className="card-text">{card.description}</p>
-                  <p className="card-text">{card.details}</p>
-                  <p className="card-text"><strong>Impact:</strong> {card.impact}</p>
-                  <p className="card-text"><strong>Contact:</strong> {card.contact}</p>
-                  <div className="card-footer">
-                    <a href={card.link} target="_blank" rel="noopener noreferrer">Learn More</a>
-                  </div>
-                </div>
+      <div className="cards-container">
+        {cardData.map((card, idx) => (
+          <div key={idx} className="card">
+            <div className="card-image-container">
+              <img src={card.image} alt={card.title} className="card-image" />
+            </div>
+            <div className="card-content">
+              <h2 className="card-title">{card.title}</h2>
+              <p className="card-text">{card.description}</p>
+              <p className="card-text">{card.details}</p>
+              <p className="card-text"><strong>Impact:</strong> {card.impact}</p>
+              <p className="card-text"><strong>Contact:</strong> {card.contact}</p>
+              <div className="card-footer">
+                <a href={card.link} target="_blank" rel="noopener noreferrer">Learn More</a>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-        <button className="carousel-button next" onClick={handleNext}>›</button>
+        ))}
       </div>
     </div>
   );
