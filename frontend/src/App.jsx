@@ -7,17 +7,16 @@ import About from './components/About';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import ForgotPassword from './components/ForgotPassword';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { AuthProvider } from './AuthContext.jsx';
 import Articles from './components/Articles';
 import Support from './components/Support';
 import Body from './components/Body';
 
-function App() {
-  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
+const App = () => {
   return (
-    <GoogleOAuthProvider clientId={googleClientId}>
-      <div className='nav-router bg-indigo-300'>
+    <div className='nav-router bg-indigo-300'>
+      <AuthProvider>
         <BrowserRouter>
           <Header />
           <Routes>
@@ -26,15 +25,15 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path='/support' element={<Support/>}/>
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path='/articles' element={<Articles/>}/>
-            <Route path='/support' element={<Support/>}/>
             <Route path='/body' element={<Body/>}/>
           </Routes>
         </BrowserRouter>
-      </div>
-    </GoogleOAuthProvider>
+      </AuthProvider>
+    </div>
   );
-}
+};
 
 export default App;
