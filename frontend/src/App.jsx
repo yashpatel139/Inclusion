@@ -11,11 +11,12 @@ import { AuthProvider } from './AuthContext.jsx';
 import Articles from './components/Articles';
 import Support from './components/Support';
 import Body from './components/Body';
+import Ourwork from './components/Ourwork.jsx';
 
 
 const App = () => {
   return (
-    <div className='nav-router bg-indigo-300'>
+    <div className='nav-router'>
       <AuthProvider>
         <BrowserRouter>
           <Header />
@@ -29,6 +30,8 @@ const App = () => {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path='/articles' element={<Articles/>}/>
             <Route path='/body' element={<Body/>}/>
+            <Route path='/goals' element={<Ourwork/>}/>
+            
           </Routes>
         </BrowserRouter>
       </AuthProvider>
