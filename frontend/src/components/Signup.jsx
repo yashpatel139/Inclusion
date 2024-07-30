@@ -1,42 +1,95 @@
 import React, { useState } from 'react';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import logo from '../assets/image.png'; // Ensure the path is correct
 
 const Signup = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
+    setLoading(true);
+    setError('');
+    setSuccess('');
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/user/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, password, confirmpassword: confirmPassword }),
+      });
+
+      const result = await response.json();
+
+        
+        setSuccess(result.message);
+      
+      
+    } catch (error) {
+      console.error('Error signing up:', error);
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-r from-indigo-200 via-indigo-300 to-purple-300">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center">Signup</h2>
+    <div className="relative flex h-screen items-center justify-center bg-cover bg-center" style={{ backgroundImage: 'url(/login1.jpg)' }}>
+      <div className="absolute inset-0 bg-black opacity-40"></div> {/* Darker Overlay */}
+      <div className="relative w-full max-w-md p-8 bg-white bg-opacity-20 rounded-lg shadow-lg">
+        {/* Logo Image */}
+        <div className="mb-4 flex justify-center">
+          <img src={logo} alt="Signup logo" className="h-16 w-16" />
+        </div>
+        <h2 className="text-2xl font-bold mb-6 text-center text-black">Signup</h2>
+        {error && <p className="text-red-600 text-center mb-4">{error}</p>}
+        {success && <p className="text-green-600 text-center mb-4">{success}</p>}
         <form onSubmit={handleSignup} className="space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <label htmlFor="name" className="block text-sm font-medium text-black">Name</label>
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 text-black"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-black">Email</label>
             <input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 text-black"
               required
             />
           </div>
           <div className="relative">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <label htmlFor="password" className="block text-sm font-medium text-black">Password</label>
             <input
               id="password"
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 pr-10"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 pr-10 text-black"
               required
             />
             <button
@@ -52,13 +105,13 @@ const Signup = () => {
             </button>
           </div>
           <div className="relative">
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-black">Confirm Password</label>
             <input
               id="confirmPassword"
               type={showConfirmPassword ? 'text' : 'password'}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 pr-10"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 pr-10 text-black"
               required
             />
             <button
@@ -75,11 +128,17 @@ const Signup = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700"
+            className="w-full bg-purple-600 border border-purple-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-purple-700 hover:border-purple-700 transition duration-300 ease-in-out"
+            disabled={loading}
           >
-            Signup
+            {loading ? 'Signing up...' : 'Signup'}
           </button>
         </form>
+        <div className="mt-4 flex flex-col items-center">
+          <p className="text-sm text-black">
+            Already have an account? <a href="/login" className="text-purple-900 hover:text-purple-700">Login</a>
+          </p>
+        </div>
       </div>
     </div>
   );
