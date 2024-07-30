@@ -1,98 +1,56 @@
-/* Body.css */
-.carousel-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  .carousel-wrapper {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-  }
-  
-  .carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .card {
-    flex: 0 0 33.333%; /* Display 3 cards per row */
-    box-sizing: border-box;
-    padding: 0 16px;
-    margin-right: 16px; /* Add margin between cards */
-    background-color: #f8f9fa !important;
-    border: 1px solid #dee2e6 !important;
-    border-radius: 8px !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-  }
-  
-  .card-image-container {
-    height: 200px !important;
-    overflow: hidden !important;
-    border-radius: 8px 8px 0 0 !important;
-    position: relative; /* Needed for zoom effect */
-  }
-  
-  .card-image {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    transition: transform 0.3s ease-in-out !important;
-  }
-  
-  .card-content {
-    padding: 16px !important;
-    transition: background-color 0.3s ease !important;
-  }
-  
-  .carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    padding: 12px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%;
-    font-size: 24px; /* Larger font size for arrows */
-    transition: background 0.3s ease;
-  }
-  
-  .carousel-button:hover {
-    background: rgba(0, 0, 0, 0.9);
-  }
-  
-  .prev {
-    left: 10px;
-  }
-  
-  .next {
-    right: 10px;
-  }
-  
-  .card-title {
-    font-size: 1.25rem !important;
-    font-weight: bold !important;
-    margin-bottom: 8px !important;
-  }
-  
-  .card-text {
-    font-size: 1rem !important;
-    color: #495057 !important;
-  }
-  
-  .card-footer {
-    margin-top: auto !important;
-    font-size: 0.875rem !important;
-    color: #007bff !important;
-  }
-  
-  .card-image-container:hover .card-image {
-    transform: scale(1.1); /* Zoom in effect */
-  }
-  
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Gap between cards */
+  justify-content: center; /* Center cards horizontally */
+}
+
+.card {
+  flex: 0 1 calc(33.333% - 16px); /* 3 cards per row with gap included */
+  box-sizing: border-box;
+  padding: 16px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-image-container {
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+  position: relative; /* Needed for zoom effect */
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #495057;
+}
+
+.card-footer {
+  margin-top: auto;
+  font-size: 0.875rem;
+  color: #007bff;
+}
+
+.card-image-container:hover .card-image {
+  transform: scale(1.1); /* Zoom in effect */
+}
