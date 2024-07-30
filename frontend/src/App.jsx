@@ -15,6 +15,7 @@ import Ourwork from './components/Ourwork.jsx';
 import Home1 from './components/Home1';
 import DonHome from './components/DonHome';
 import Gallery from './components/Gallery';
+import Footer from './components/Footer.jsx';
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/gallery" element={<Gallery/>}/>
             
           </Routes>
+          <Footer/>
         </BrowserRouter>
       </AuthProvider>
     </div>
