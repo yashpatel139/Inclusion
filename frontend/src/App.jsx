@@ -12,7 +12,9 @@ import Articles from './components/Articles';
 import Support from './components/Support';
 import Body from './components/Body';
 import Ourwork from './components/Ourwork.jsx';
-
+import Home1 from './components/Home1';
+import DonHome from './components/DonHome';
+import Gallery from './components/Gallery';
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
       <AuthProvider>
         <BrowserRouter>
           <Header />
+         
+           
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="/contact" element={<Contact />} />
@@ -31,6 +35,8 @@ const App = () => {
             <Route path='/articles' element={<Articles/>}/>
             <Route path='/body' element={<Body/>}/>
             <Route path='/goals' element={<Ourwork/>}/>
+            <Route path="/donate" element={<DonHome/>}/>
+            <Route path="/gallery" element={<Gallery/>}/>
             
           </Routes>
         </BrowserRouter>

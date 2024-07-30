@@ -145,7 +145,7 @@ const About = () => {
                                 { title: "Localized Services", description: "Information on local services and support tailored to specific regions, ensuring that users find resources close to their location.", path: "loc.jpg" },
                             ].map((feature, index) => (
                                 <motion.div 
-                                    className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300"
+                                    className="p-6 bg-white rounded-lg shadow-lg hover:bg-gray-200 cursor-pointer hover:shadow-xl transform hover:scale-105 transition duration-300"
                                     key={index}
                                     variants={scaleUp}
                                     initial="hidden"
@@ -153,7 +153,7 @@ const About = () => {
                                     transition={{ duration: 1, delay: index * 0.2 }}
                                 >
                                     <img src={feature.path} alt={feature.title} className="w-full h-40 object-cover rounded-md mb-4" />
-                                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
+                                    <h3 className="text-xl font-semibold text-gray-800 mb-2 hover:text-blue-600">{feature.title}</h3>
                                     <p className="text-gray-700">{feature.description}</p>
                                 </motion.div>
                             ))}
@@ -173,7 +173,8 @@ const About = () => {
                         transition={{ duration: 1 }}
                         ref={teamMembersRef}
                     >
-                        <h2 className="text-4xl font-bold text-gray-900 mb-6">Team Members</h2>
+                        <h1 className="text-4xl font-bold text-orange-400 mb-6 ">Web Wizards</h1>
+                        <h2 className="text-4xl text-gray-900 mb-6">Team Members</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                             {[
                                 { name: "Manu Saini", title: "Full Stack Developer", image: "manu.jpeg" },
@@ -183,7 +184,7 @@ const About = () => {
                                 // Add more team members as needed
                             ].map((member, index) => (
                                 <motion.div 
-                                    className="bg-gray-50 p-6 rounded-lg shadow-md"
+                                    className="bg-gray-50 hover:bg-gray-200 cursor-pointer p-6 rounded-lg shadow-md"
                                     key={index}
                                     variants={scaleUp}
                                     initial="hidden"
@@ -191,7 +192,7 @@ const About = () => {
                                     transition={{ duration: 1, delay: index * 0.2 }}
                                 >
                                     <img src={member.image} alt={member.name} className="w-32 h-32 object-cover rounded-full mx-auto mb-4" />
-                                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
+                                    <h3 className="text-xl font-semibold text-gray-900 hover:text-blue-700 mb-2">{member.name}</h3>
                                     <p className="text-gray-700">{member.title}</p>
                                 </motion.div>
                             ))}
