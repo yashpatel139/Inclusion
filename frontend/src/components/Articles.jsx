@@ -15,61 +15,61 @@ const Articles = () => {
 
     const articles = [
         // Your article data here
-        {
-            id: 1,
-            title: 'Modi launches PM-SURAJ portal to benefit marginalised sector',
-            description: 'Modi said that the government has spent nearly Rs.1.60 lakh crore for the welfare of the SC community this year alone. “Today’s occasion provides a glimpse of the government’s commitment to prioritise the underprivileged,” said Modi. He expressed satisfaction with how welfare schemes are reaching the Dalits, deprived, and backward communities. “This makes me emotional as I am not separate from them, and I see in them my family,” he said.The PM talked about the importance of reaching out to marginalised communities and ensuring their inclusion in the nation’s development process. He stressed the significance of initiatives like PM-SURAJ in providing financial assistance directly to beneficiaries, eliminating middlemen and commissions.',
-            image: 'topart1.jpg',
-            date: '10 July 2024',
-            author: 'Vrinda Tulsian',
-            isMarginalizedCommunity: true
-        },
-        {
-            id: 2,
-            title: 'Maharashtra puts curbs on scholarship for marginalised students',
-            description: 'In a significant policy shift, Maharashtra, Indias second-most populous state, has introduced stricter eligibility criteria for its overseas scholarship scheme aimed at marginalized communities...',
-            image: 'art1.jpg',
-            date: '19 June 2024',
-            author: 'Abhishek Nair',
-            isMarginalizedCommunity: true
-        },
-        {
-            id: 3,
-            title: 'Accessing Justice In India: Needs Of Marginalised Communities',
-            description: 'Initiatives are being implemented to support women entrepreneurs, providing access to resources and networks...',
-            image: 'art2.jpg',
-            date: '8 June 2024',
-            author: 'Purnima Sharma',
-            isMarginalizedCommunity: true
-        },
-        {
-            id: 4,
-            title: 'Creating opportunities for inclusivity among marginalized groups',
-            description: 'Educational programs tailored to the needs of indigenous communities are making a significant impact...',
-            image: 'art3.jpeg',
-            date: '05 Jan 2024',
-            author: 'Vinita Agarwal',
-            isMarginalizedCommunity: true
-        },
-        {
-            id: 5,
-            title: 'Transition away from coal power poses grave challenges to marginalised groups: report',
-            description: 'India plans to phase down coal use to achieve the target of 50% cumulative electric power installed capacity from sources based on non-fossil fuels by 2030...',
-            image: 'art4.avif',
-            date: '25 Dec 2023',
-            author: 'Michael Brown',
-            isMarginalizedCommunity: true
-        },
-        {
-            id: 6,
-            title: 'PM Modi launches one-stop portal for credit schemes for marginalised sections',
-            description: 'The Prime Minister reiterated his “guarantee” that the campaign of development and respect for deprived classes will intensify in next 5 years.Launching the Pradhan Mantri Samajik Utthan evam Rozgar Adharit Jankalyan (PM-SURAJ) portal for credit support to entrepreneurs from disadvantaged sections of society virtually on Wednesday, Prime Minister Narendra Modi said, “This is a testament to our commitment to provide dignity and justice to the underprivileged. Modi gives you this guarantee - this campaign of development and respect for the deprived class will intensify in the coming 5 years.”',
-            image: 'art6.jpg',
-            date: '25 Dec 2023',
-            author: 'Michael Brown',
-            isMarginalizedCommunity: true
-        },
-        // ... more articles
+        
+            {
+                id: 1,
+                title: 'Modi launches PM-SURAJ portal to benefit marginalised sector',
+                description: 'Modi said that the government has spent nearly Rs.1.60 lakh crore for the welfare of the SC community this year alone. “Today’s occasion provides a glimpse of the government’s commitment to prioritise the underprivileged,” said Modi. He expressed satisfaction with how welfare schemes are reaching the Dalits, deprived, and backward communities. “This makes me emotional as I am not separate from them, and I see in them my family,” he said.The PM talked about the importance of reaching out to marginalised communities and ensuring their inclusion in the nation’s development process. He stressed the significance of initiatives like PM-SURAJ in providing financial assistance directly to beneficiaries, eliminating middlemen and commissions.',
+                image: 'topart1.jpg',
+                date: '10 July 2024',
+                author: 'Vrinda Tulsian',
+                isMarginalizedCommunity: true
+            },
+            {
+                id: 2,
+                title: 'Maharashtra puts curbs on scholarship for marginalised students',
+                description: 'In a significant policy shift, Maharashtra, Indias second-most populous state, has introduced stricter eligibility criteria for its overseas scholarship scheme aimed at marginalized communities...',
+                image: 'art1.jpg',
+                date: '19 June 2024',
+                author: 'Abhishek Nair',
+                isMarginalizedCommunity: true
+            },
+            {
+                id: 3,
+                title: 'Accessing Justice In India: Needs Of Marginalised Communities',
+                description: 'Initiatives are being implemented to support women entrepreneurs, providing access to resources and networks...',
+                image: 'art2.jpg',
+                date: '8 June 2024',
+                author: 'Purnima Sharma',
+                isMarginalizedCommunity: true
+            },
+            {
+                id: 4,
+                title: 'Creating opportunities for inclusivity among marginalized groups',
+                description: 'Educational programs tailored to the needs of indigenous communities are making a significant impact...',
+                image: 'art3.jpeg',
+                date: '05 Jan 2024',
+                author: 'Vinita Agarwal',
+                isMarginalizedCommunity: true
+            },
+            {
+                id: 5,
+                title: 'Transition away from coal power poses grave challenges to marginalised groups: report',
+                description: 'India plans to phase down coal use to achieve the target of 50% cumulative electric power installed capacity from sources based on non-fossil fuels by 2030...',
+                image: 'art4.avif',
+                date: '25 Dec 2023',
+                author: 'Michael Brown',
+                isMarginalizedCommunity: true
+            },
+            {
+                id: 6,
+                title: 'PM Modi launches one-stop portal for credit schemes for marginalised sections',
+                description: 'The Prime Minister reiterated his “guarantee” that the campaign of development and respect for deprived classes will intensify in next 5 years.Launching the Pradhan Mantri Samajik Utthan evam Rozgar Adharit Jankalyan (PM-SURAJ) portal for credit support to entrepreneurs from disadvantaged sections of society virtually on Wednesday, Prime Minister Narendra Modi said, “This is a testament to our commitment to provide dignity and justice to the underprivileged. Modi gives you this guarantee - this campaign of development and respect for the deprived class will intensify in the coming 5 years.”',
+                image: 'art6.jpg',
+                date: '25 Dec 2023',
+                author: 'Michael Brown',
+                isMarginalizedCommunity: true
+            },
     ];
 
     const filteredArticles = articles.filter(article =>
@@ -93,7 +93,7 @@ const Articles = () => {
                     <input
                         type="text"
                         placeholder="Search articles..."
-                        className="w-full p-4 pr-12 border rounded"
+                        className="w-full p-4 pr-12 border-2 border-orange-300 rounded"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -113,7 +113,6 @@ const Articles = () => {
                     </svg>
                 </div>
 
-
                 {/* Show top article only if there's no search query */}
                 {!searchQuery && (
                     <div className="flex flex-col md:flex-row bg-white border-2 border-blue-50 rounded-lg overflow-hidden shadow-lg mb-8">
@@ -125,7 +124,7 @@ const Articles = () => {
                             />
                         </div>
                         <div className="p-6 flex flex-col justify-center md:w-1/2">
-                            <h2 className="text-3xl font-bold text-gray-900 mb-4">{articles[0].title}</h2>
+                            <h2 className="text-3xl font-bold text-gray-900 mb-4 hover:text-blue-600 ">{articles[0].title}</h2>
                             <p className="text-gray-700 mb-4">
                                 {articles[0].description.length > 100
                                     ? `${articles[0].description.substring(0, 300)}...`
@@ -143,13 +142,15 @@ const Articles = () => {
                     </div>
                 )}
 
-
                 {/* Trending Articles */}
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">Trending Articles</h2>
+                <h2 className="text-4xl mx-2 text-gray-800 mb-6 tracking-tight leading-snug">
+  Trending Articles
+</h2>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredArticles.map((article, index) => (
                         <motion.div
-                            className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                            className="bg-white p-6 rounded-lg shadow-md border border-gray-300 transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-gray-200 cursor-pointer"
                             key={article.id}
                             variants={fadeIn}
                             initial="hidden"
@@ -157,8 +158,8 @@ const Articles = () => {
                             transition={{ duration: 1, delay: index * 0.2 }}
                             onClick={() => setSelectedArticle(article)}
                         >
-                            <img src={article.image} alt={article.title} className="w-full h-64 object-cover rounded-md mb-4" />
-                            <h3 className="text-xl font-semibold text-gray-900 mb-2">{article.title}</h3>
+                            <img src={article.image} alt={article.title} className="w-full h-64 object-cover rounded-md mb-4 transition-transform transform hover:scale-105" />
+                            <h3 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors">{article.title}</h3>
                             <p className="text-gray-700 mb-4">
                                 {article.description.length > 100 ? `${article.description.substring(0, 100)}...` : article.description}
                             </p>
@@ -174,7 +175,6 @@ const Articles = () => {
                                     Read More
                                 </button>
                             </div>
-
                         </motion.div>
                     ))}
                 </div>
@@ -200,16 +200,14 @@ const Articles = () => {
                         <img
                             src={selectedArticle.image}
                             alt={selectedArticle.title}
-                            className="w-full h-80 object-cover border border-gray-300 mb-4"
+                            className="w-full h-80 object-cover border rounded-md border-gray-300 mb-4"
                         />
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">{selectedArticle.title}</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4 hover:text-blue-600">{selectedArticle.title}</h2>
                         <span className="text-gray-500">{selectedArticle.date} • {selectedArticle.author}</span>
                         <p className="text-gray-700 mt-4">{selectedArticle.description}</p>
                     </div>
                 )}
             </Modal>
-
-
         </div>
     );
 };
