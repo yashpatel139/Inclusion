@@ -9,9 +9,10 @@ import Signup from './components/Signup';
 import ForgotPassword from './components/ForgotPassword';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Articles from './components/Articles';
+import Support from './components/Support';
 import Body from './components/Body';
+
 function App() {
-  // Ensure you are checking the environment variable correctly
   const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
   return (
@@ -27,7 +28,8 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path='/articles' element={<Articles/>}/>
-              <Route path='/body' element={<Body/>}/>
+            <Route path='/support' element={<Support/>}/>
+            <Route path='/body' element={<Body/>}/>
           </Routes>
         </BrowserRouter>
       </div>
