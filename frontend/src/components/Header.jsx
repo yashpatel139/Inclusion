@@ -29,6 +29,9 @@ const Header = () => {
             <li>
               <Link to="/contact" className="hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text">Contact</Link>
             </li>
+            <li>
+              <Link to="/goals" className="hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text">Goals</Link>
+            </li>
           
           <div className="hidden lg:flex justify-center space-x-12 items-center">
             {user ? (

@@ -27,10 +27,10 @@ const Ourwork = () => {
     const { ref: ngoRef, inView: ngoInView } = useInView({ triggerOnce: true, threshold: 0.1 });
     return (
         <div>
-            <div className=" w-full flex justify-center font-bold text-5xl bg-gradient-to-r from-red-300 to-orange-400 ">
-                OUR WORK
+            <div className=" w-full flex justify-center font-bold text-5xl bg-gradient-to-r from-red-300 to-orange-400 py-4 ">
+                OUR GOALS
             </div>
-            <section className="flex items-center px-6 min-h-96 bg-green-100">
+            <section className="flex items-center p-10 min-h-96 bg-green-100 ">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
                     <motion.div
                         className="md:w-1/2 text-left mb-8 md:mb-0"
@@ -43,7 +43,7 @@ const Ourwork = () => {
                         <motion.img
                             src="leaf.png"
                             alt="Vision Logo"
-                            className="inline-block w-12 h-12 md:w-16 md:h-16  "
+                            className="inline-block w-12 h-12 md:w-16 md:h-16 "
                             variants={fadeIn}
                             initial="hidden"
                             animate={visionInView ? "visible" : "hidden"}
@@ -70,7 +70,7 @@ const Ourwork = () => {
 
             {/* health */}
 
-            <section className="flex items-center  px-6 min-h-96 bg-red-100">
+            <section className="flex items-center  p-10 min-h-96 bg-red-100">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
                     <motion.div
                         className="md:w-1/2 flex justify-center"
@@ -110,7 +110,7 @@ const Ourwork = () => {
             </section>
             {/* skill and community */}
 
-            <section className="flex items-center bg-purple-100 px-6 min-h-96">
+            <section className="flex items-center bg-purple-100 min-h-96 p-10">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
                     <motion.div
                         className="md:w-1/2 text-left mb-8 md:mb-0"
@@ -154,7 +154,7 @@ const Ourwork = () => {
 
             {/* education */}
 
-            <section className="flex items-center  px-6 min-h-96 bg-red-100">
+            <section className="flex items-center  p-10 min-h-96 bg-red-100 ">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
                     <motion.div
                         className="md:w-1/2 flex justify-center"
@@ -195,7 +195,7 @@ const Ourwork = () => {
 
             {/*ngo  */}
 
-            <section className="flex items-center bg-purple-100 px-6 min-h-96">
+            <section className="flex items-center bg-purple-100 min-h-96 p-10">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
                     <motion.div
                         className="md:w-1/2 text-left mb-8 md:mb-0"
@@ -237,15 +237,15 @@ const Ourwork = () => {
 
             {/* heading */}
 
-            <h1 className=" w-full flex justify-center font-bold text-5xl bg-gradient-to-r from-red-300 to-orange-400">
+            <h1 className=" w-full flex justify-center font-bold text-5xl bg-gradient-to-r from-red-300 to-orange-400 p-4">
                 OUR PREDICTED FUTURE PRESENCE
             </h1>
 
             {/* india */}
 
-            <section className="flex items-center  px-6 min-h-screen bg-orange-100">
-                <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
-                    <div className="flex flex-col w-1/2">
+            <section className="flex items-center  p-6 min-h-screen bg-orange-100">
+                <div className="container h-1/2 mx-auto flex flex-col md:flex-row items-center justify-center">
+                    <div className="flex flex-col w-1/2 py-5 pl-5">
                     <motion.div
                         className="md:w-1/2 text-left mb-8 md:mb-6"
                         variants={fadeIn}
@@ -350,7 +350,7 @@ const Ourwork = () => {
                         transition={{ duration: 1, delay: 0.5 }}
                         ref={indiaRef}
                     >
-                        <img src="india.png" alt="Our Vision" className="w-96 h-96 md:w-96 md:h-96 " />
+                        <img src="india.png" alt="Our Vision" className="w-full h-full " />
                     </motion.div>
                 </div>
             </section>
