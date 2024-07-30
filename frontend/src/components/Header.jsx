@@ -87,9 +87,9 @@ const Header = () => {
           Profile
           <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-orange-500 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
         </Link>
-        </li>
+        </li> 
         <li className='relative group'>
-        <button 
+        <button  
           onClick={logout} 
           className="relative hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-800 hover:text-transparent hover:bg-clip-text"
         >
