@@ -909,130 +909,197 @@ const stateDistrictData = {
   }
 
   
-  
-  const schema = yup.object({
-    name: yup.string().required('Name is required'),
-    emailid: yup.string().email('Invalid email address').required('Email is required'),
-    phone: yup.string()
-      .matches(/^\d{10}$/, 'Phone number must be exactly 10 digits')
-      .required('Phone number is required'),
-    state: yup.string().required('State is required'),
-    district: yup.string().required('District is required'),
-    msgContent: yup.string().required('Message is required'),
-  }).required();
-  
-  const ContactForm = () => {
-    const [states] = useState(stateDistrictData.states);
-    const [districts, setDistricts] = useState([]);
-    const [selectedState, setSelectedState] = useState("");
-  
-    const [state, handleSubmitForm] = useFormspree("mvgpkjze"); // Replace with your Formspree ID
-  
-    const { control, handleSubmit, setValue, reset, formState: { errors } } = useForm({
-      resolver: yupResolver(schema),
-    });
-  
-    const handleStateChange = (e) => {
-      const state = e.target.value;
-      setSelectedState(state);
-      const selectedStateData = stateDistrictData.states.find(st => st.state === state);
-      setDistricts(selectedStateData ? selectedStateData.districts : []);
-      setValue('state', state);
-      setValue('district', ''); // Reset district when state changes
-    };
-  
-    const onSubmit = async (data) => {
+ // Validation schema
+const schema = yup.object({
+   name: yup.string().required('Name is required'),
+   emailid: yup.string().email('Invalid email address').required('Email is required'),
+   phone: yup.string()
+     .matches(/^\d{10}$/, 'Phone number must be exactly 10 digits')
+     .required('Phone number is required'),
+   state: yup.string().required('State is required'),
+   district: yup.string().required('District is required'),
+   msgContent: yup.string().required('Message is required'),
+ }).required();
+ 
+ const ContactForm = () => {
+   const [states] = useState(stateDistrictData.states);
+   const [districts, setDistricts] = useState([]);
+   const [selectedState, setSelectedState] = useState("");
+ 
+   const [state, handleSubmitForm] = useFormspree("mvgpkjze"); // Replace with your Formspree ID
+ 
+   const { control, handleSubmit, setValue, reset, formState: { errors } } = useForm({
+     resolver: yupResolver(schema),
+   });
+ 
+   // Handle state change
+   const handleStateChange = (e) => {
+     const selectedState = e.target.value;
+     setSelectedState(selectedState);
+     const stateData = stateDistrictData.states.find(st => st.state === selectedState);
+     setDistricts(stateData ? stateData.districts : []);
+     setValue('state', selectedState);
+     setValue('district', ''); // Reset district when state changes
+   };
+ 
+   // Handle form submission
+   const onSubmit = async (data) => {
       try {
-        await handleSubmitForm(data); // Submit form data to Formspree
-        alert('Your message has been sent');
-        reset(); // Reset form fields
-      } catch (error) {
-        console.error('Error submitting form', error);
-      }
-    };
-  
-    return (
-      <div className="container mx-auto px-4 py-6 max-w-md">
-        <div className="text-center mb-6">
-          <h2 className="text-3xl font-semibold">Contact Us</h2>
-          <p className="text-lg text-gray-700">Get in touch with us using the form below.</p>
+         await handleSubmitForm(data); // Submit form data to Formspree
+         alert('Your message has been sent');
+         reset({ // Reset form fields
+           state: '',
+           district: '',
+           name: '',
+           emailid: '',
+           phone: '',
+           msgContent: '',
+         });
+         setSelectedState(''); // Reset selected state
+         setDistricts([]); // Clear districts
+       } catch (error) {
+         console.error('Error submitting form', error);
+       }
+   };
+ 
+ 
+   return (
+      <div className="container mx-auto px-4 py-6 flex flex-col lg:flex-row items-center bg-[#e6f3ff] gap-6">
+        {/* Image Section */}
+        <div className="flex-none w-full lg:w-1/2 mb-6 lg:mb-0 lg:pr-6">
+          <img src="/contact-us.png" alt="Contact" className="w-full h-auto max-w-md mx-auto" />
+          <p className="text-gray-600 font-bold text-center">
+            Contact us with your inquiries or concerns,<br />
+            and we'll get back to you promptly.
+          </p>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-            <Controller
-              name="name"
-              control={control}
-              render={({ field }) => <input id="name" {...field} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg" />}
-            />
-            <p className="text-red-600">{errors.name?.message}</p>
-          </div>
-          <div>
-            <label htmlFor="emailid" className="block text-sm font-medium text-gray-700">Email</label>
-            <Controller
-              name="emailid"
-              control={control}
-              render={({ field }) => <input id="emailid" {...field} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg" />}
-            />
-            <p className="text-red-600">{errors.emailid?.message}</p>
-          </div>
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
-            <Controller
-              name="phone"
-              control={control}
-              render={({ field }) => <input id="phone" {...field} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg" />}
-            />
-            <p className="text-red-600">{errors.phone?.message}</p>
-          </div>
-          <div>
-            <label htmlFor="state" className="block text-sm font-medium text-gray-700">State</label>
-            <Controller
-              name="state"
-              control={control}
-              render={({ field }) => (
-                <select id="state" {...field} onChange={(e) => {
-                  field.onChange(e);
-                  handleStateChange(e);
-                }} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg">
-                  <option value="">Select a state</option>
-                  {states.map((st, index) => (
-                    <option key={index} value={st.state}>{st.state}</option>
-                  ))}
-                </select>
-              )}
-            />
-            <p className="text-red-600">{errors.state?.message}</p>
-          </div>
-          <div>
-            <label htmlFor="district" className="block text-sm font-medium text-gray-700">District</label>
-            <Controller
-              name="district"
-              control={control}
-              render={({ field }) => (
-                <select id="district" {...field} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg">
-                  <option value="">Select a district</option>
-                  {districts.map((district, index) => (
-                    <option key={index} value={district}>{district}</option>
-                  ))}
-                </select>
-              )}
-            />
-            <p className="text-red-600">{errors.district?.message}</p>
-          </div>
-          <div>
-            <label htmlFor="msgContent" className="block text-sm font-medium text-gray-700">Message</label>
-            <Controller
-              name="msgContent"
-              control={control}
-              render={({ field }) => (
-                <textarea id="msgContent" {...field} rows="4" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 text-lg"></textarea>
-              )}
-            />
-            <p className="text-red-600">{errors.msgContent?.message}</p>
-          </div>
-          <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600">Send Message</button>
-        </form>
+  
+        {/* Form Section */}
+        <div className="flex-grow w-full max-w-lg border-2 border-gray-500 rounded-lg p-6 shadow-lg bg-white bg-[#e6ebfe]">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+              <Controller
+                name="name"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    id="name"
+                    {...field}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-sm focus:ring-2 focus:ring-blue-500"
+                  />
+                )}
+              />
+              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
+            </div>
+  
+            <div>
+              <label htmlFor="emailid" className="block text-sm font-medium text-gray-700">Email</label>
+              <Controller
+                name="emailid"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    id="emailid"
+                    {...field}
+                    type="email"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-sm focus:ring-2 focus:ring-blue-500"
+                  />
+                )}
+              />
+              {errors.emailid && <p className="text-red-500 text-xs mt-1">{errors.emailid.message}</p>}
+            </div>
+  
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
+              <Controller
+                name="phone"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    id="phone"
+                    {...field}
+                    type="tel"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-sm focus:ring-2 focus:ring-blue-500"
+                  />
+                )}
+              />
+              {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
+            </div>
+  
+            <div>
+              <label htmlFor="state" className="block text-sm font-medium text-gray-700">State</label>
+              <Controller
+                name="state"
+                control={control}
+                render={({ field }) => (
+                  <select
+                    id="state"
+                    {...field}
+                    onChange={(e) => {
+                      handleStateChange(e); // Update districts when state changes
+                      field.onChange(e); // Call the field's onChange to ensure React Hook Form updates the value
+                    }}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-sm focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Select a state</option>
+                    {states.map((st) => (
+                      <option key={st.state} value={st.state}>{st.state}</option>
+                    ))}
+                  </select>
+                )}
+              />
+              {errors.state && <p className="text-red-500 text-xs mt-1">{errors.state.message}</p>}
+            </div>
+  
+            <div>
+              <label htmlFor="district" className="block text-sm font-medium text-gray-700">District</label>
+              <Controller
+                name="district"
+                control={control}
+                render={({ field }) => (
+                  <select
+                    id="district"
+                    {...field}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-sm focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Select a district</option>
+                    {districts.map((district) => (
+                      <option key={district} value={district}>{district}</option>
+                    ))}
+                  </select>
+                )}
+              />
+              {errors.district && <p className="text-red-500 text-xs mt-1">{errors.district.message}</p>}
+            </div>
+  
+            <div>
+              <label htmlFor="msgContent" className="block text-sm font-medium text-gray-700">Message</label>
+              <Controller
+                name="msgContent"
+                control={control}
+                render={({ field }) => (
+                  <textarea
+                    id="msgContent"
+                    {...field}
+                    rows="4"
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-sm focus:ring-2 focus:ring-blue-500"
+                  />
+                )}
+              />
+              {errors.msgContent && <p className="text-red-500 text-xs mt-1">{errors.msgContent.message}</p>}
+            </div>
+  
+            <div>
+              <button
+                type="submit"
+                className="w-full py-2 px-4 bg-blue-500 text-white font-medium rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                Send
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   };
