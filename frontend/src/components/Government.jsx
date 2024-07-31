@@ -150,7 +150,7 @@ const schemes = [
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredSchemes.map((scheme, index) => (
                         <motion.div
-                            className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                            className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300 hover:shadow-lg hover:bg-gray-200 cursor-pointer"
                             key={scheme.id}
                             variants={fadeIn}
                             initial="hidden"
