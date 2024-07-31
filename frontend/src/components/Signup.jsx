@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
-import logo from '../assets/image.png'; // Ensure the path is correct
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,14 +18,7 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true);
     setError('');
-    setSuccess('');
-
-    if (password !== confirmPassword) {
-      setError('Passwords do not match.');
-      setLoading(false);
-      return;
-    }
-
+  
     try {
       const response = await fetch('http://localhost:5000/user/signup', {
         method: 'POST',
@@ -35,16 +29,20 @@ const Signup = () => {
       });
 
       const result = await response.json();
+      console.log(result);
+      console.log(result.auth);
       
-      if (response.ok) {
-        setSuccess(result.message);
+      if (result.auth) {
+        localStorage.setItem("token", JSON.stringify(result.auth));
+        // setSuccess(result.message);
+        navigate('/');
       } else {
         setError(result.message);
       }
       
     } catch (error) {
       console.error('Error signing up:', error);
-      setError('An error occurred. Please try again later.');
+      setError(error);
     } finally {
       setLoading(false);
     }
@@ -105,9 +103,9 @@ const Signup = () => {
               className="absolute inset-y-0 right-2 flex items-center text-gray-500"
             >
               {showPassword ? (
-                <EyeIcon className="h-5 w-5" aria-hidden="true" />
+                <EyeIcon className="h-5 w-5 mt-6" aria-hidden="true" />
               ) : (
-                <EyeSlashIcon className="h-5 w-5" aria-hidden="true" />
+                <EyeSlashIcon className="h-5 w-5 mt-6" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -127,9 +125,9 @@ const Signup = () => {
               className="absolute inset-y-0 right-2 flex items-center text-gray-500"
             >
               {showConfirmPassword ? (
-                <EyeIcon className="h-5 w-5" aria-hidden="true" />
+                <EyeIcon className="h-5 w-5 mt-6" aria-hidden="true" />
               ) : (
-                <EyeSlashIcon className="h-5 w-5" aria-hidden="true" />
+                <EyeSlashIcon className="h-5 w-5 mt-6" aria-hidden="true" />
               )}
             </button>
           </div>
