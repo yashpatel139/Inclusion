@@ -42,21 +42,23 @@ const Login = () => {
       });
 
       const result = await response.json();
-
-      if (response.ok) {
+      console.log(result)
+      console.log("------>>>>>",result.userInfo)
+      console.log(result.auth)
         // Handle successful login
-        if (result.message === "User Exists") {
+        if (result.auth) {
           // Update authentication context
-          login({ token: result.token, email });
+          // login({ token: result.token, email });
+          localStorage.setItem("token", JSON.stringify(result.auth));
 
           // Decide storage based on 'Remember Me' checkbox
           if (rememberMe) {
-            localStorage.setItem('authToken', result.token); // Store in localStorage
+            // localStorage.setItem('authToken', result.auth); // Store in localStorage
             localStorage.setItem('email', email);
             localStorage.setItem('password', password);
             localStorage.setItem('rememberMe', 'true');
           } else {
-            sessionStorage.setItem('authToken', result.token); // Store in sessionStorage
+            // sessionStorage.setItem('authToken', result.token); // Store in sessionStorage
             localStorage.removeItem('email');
             localStorage.removeItem('password');
             localStorage.removeItem('rememberMe');
@@ -67,9 +69,7 @@ const Login = () => {
         } else {
           setError(result.message );
         }
-      } else {
-        setError(result.message );
-      }
+     
     } catch (error) {
       console.error('Error logging in:', error);
       setError('An error occurred. Please try again later.');
@@ -120,9 +120,9 @@ const Login = () => {
               className="absolute inset-y-0 right-2 flex items-center text-gray-500"
             >
               {showPassword ? (
-                <EyeIcon className="h-5 w-5" aria-hidden="true" />
+                <EyeIcon className="h-5 w-5 mt-6" aria-hidden="true" />
               ) : (
-                <EyeSlashIcon className="h-5 w-5" aria-hidden="true" />
+                <EyeSlashIcon className="h-5 w-5 mt-6" aria-hidden="true" />
               )}
             </button>
           </div>
