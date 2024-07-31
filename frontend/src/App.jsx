@@ -15,6 +15,7 @@ import Ourwork from './components/Ourwork.jsx';
 import DonHome from './components/DonHome';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer.jsx';
+import Government from './components/Government.jsx';
 
 const App = () => {
 
@@ -34,6 +35,7 @@ const App = () => {
             <Route path='/support' element={<Support/>}/>
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path='/articles' element={<Articles/>}/>
+            <Route path='/govt' element={<Government/>}/>
             <Route path='/body' element={<Body/>}/>
             <Route path='/goals' element={<Ourwork/>}/>
             <Route path="/donate" element={<DonHome/>}/>

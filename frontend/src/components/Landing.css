@@ -1,0 +1,16 @@
+/* Add the visible class to control the opacity and transformation for the animation */
+.visible {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+  
+  
+  /* Ensure background image covers the entire screen */
+  .bg-cover {
+    background-size: cover;
+  }
+  
+  /* Ensure background image is centered */
+  .bg-center {
+    background-position: center;
+  }
