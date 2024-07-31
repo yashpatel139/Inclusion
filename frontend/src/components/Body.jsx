@@ -71,12 +71,12 @@ const Body = () => {
       <h1 className="text-4xl font-bold mb-6 text-center">NGOs and UN Programs</h1>
       <div className="cards-container">
         {cardData.map((card, idx) => (
-          <div key={idx} className="card">
-            <div className="card-image-container">
+          <div key={idx} className="card shadow-lg hover:bg-gray-200 cursor-pointer hover:shadow-xl">
+            <div className="card-image-container ">
               <img src={card.image} alt={card.title} className="card-image" />
             </div>
             <div className="card-content">
-              <h2 className="card-title">{card.title}</h2>
+              <h2 className="card-title hover:text-blue-500">{card.title}</h2>
               <p className="card-text">{card.description}</p>
               <p className="card-text">{card.details}</p>
               <p className="card-text"><strong>Impact:</strong> {card.impact}</p>
