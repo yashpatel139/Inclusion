@@ -178,9 +178,9 @@ const About = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                             {[
                                 { name: "Manu Saini", title: "Full Stack Developer", image: "manu.jpeg" },
-                                { name: "Yash Patel", title: "Full Stack Developer", image: "manu.jpeg" },
-                                { name: "Kunal Singh", title: "Full Stack Developer", image: "manu.jpeg" },
-                                { name: "Bhoopendra Singh", title: "Full Stack Developer", image: "manu.jpeg" },
+                                { name: "Yash Patel", title: "Full Stack Developer", image: "yash.jpg" },
+                                { name: "Kunal Singh", title: "Full Stack Developer", image: "kunal.jpg" },
+                                { name: "Bhoopendra Singh", title: "Full Stack Developer", image: "bhupi.jpg" },
                                 // Add more team members as needed
                             ].map((member, index) => (
                                 <motion.div 

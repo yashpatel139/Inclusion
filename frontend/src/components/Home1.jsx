@@ -64,7 +64,7 @@ const HomePage = () => {
       <section className="py-12 px-6 bg-gray-100">
             <div className="container mx-auto ">
                 <h2 className="text-3xl font-bold text-center mr-14 mb-8">OUR FOCUS</h2>
-                <div className="flex overflow-x-auto space-x-8 pb-4 px-10 ">
+                <div className="flex overflow-x-auto space-x-8 pb-4 px-7 ">
                     
                     {/* Card 1: Multilingual Support */}
                     <div className="bg-white p-6 rounded-lg shadow-lg flex-shrink-0 w-64 transform transition-transform hover:scale-105 cursor-pointer animate-fadeInUp animate-on-scroll" onClick={scrollToDown}>
