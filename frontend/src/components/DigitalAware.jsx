@@ -24,6 +24,9 @@ const slideInFromRight = {
 };
 
 const DigitalAware = () => {
+    const scrollToTop=()=>{
+        window.scrollTo(0, 0);
+      }
     const { ref: visionRef, inView: visionInView } = useInView({ triggerOnce: true, threshold: 0.1 });
     const { ref: whatWeDoRef, inView: whatWeDoInView } = useInView({ triggerOnce: true, threshold: 0.1 });
     const { ref: featuresRef, inView: featuresInView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -81,6 +84,7 @@ const DigitalAware = () => {
                                         className="p-6 bg-white rounded-lg border-2 border-gray-300 shadow-lg hover:bg-green-100 cursor-pointer hover:shadow-xl transform hover:scale-105 transition duration-300"
                                         variants={scaleUp}
                                         initial="hidden"
+                                        onClick={scrollToTop}
                                         animate={featuresInView ? "visible" : "hidden"}
                                         transition={{ duration: 1, delay: index * 0.2 }}
                                     >

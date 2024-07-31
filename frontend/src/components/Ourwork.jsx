@@ -27,9 +27,10 @@ const Ourwork = () => {
     const { ref: ngoRef, inView: ngoInView } = useInView({ triggerOnce: true, threshold: 0.1 });
     return (
         <div>
-            <div className=" w-full flex justify-center font-bold text-5xl bg-orange-200 py-4 ">
+            <div className=" w-full flex justify-center font-bold text-5xl bg-green-100 py-4 ">
                 OUR GOALS
             </div>
+            <span className="absolute left-1/3 w-1/3 border-b-4 border-orange-600"></span>
             <section className="flex items-center p-10 min-h-96 bg-green-100 ">
                 <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
                     <motion.div

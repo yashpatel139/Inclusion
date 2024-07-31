@@ -16,7 +16,7 @@ import DonHome from './components/DonHome';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer.jsx';
 import Government from './components/Government.jsx';
-
+import Local from './components/Local.jsx';
 const App = () => {
 
   return (
@@ -40,6 +40,7 @@ const App = () => {
             <Route path='/goals' element={<Ourwork/>}/>
             <Route path="/donate" element={<DonHome/>}/>
             <Route path="/gallery" element={<Gallery/>}/>
+            <Route path="/local" element={<Local/>}/>
             
           </Routes>
           <Footer/>
