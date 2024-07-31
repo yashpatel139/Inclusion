@@ -59,7 +59,7 @@ const HomePage = () => {
       <div className="py-20 bg-gray-100">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12">
-            Our Impact
+            Our Target
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <div className="animate-on-scroll">
@@ -76,7 +76,7 @@ const HomePage = () => {
             </div>
             <div className="animate-on-scroll">
               <h3 className="text-2xl font-bold text-green-600">
-                <CountUp start={0} end={3111359} duration={4} />+
+                <CountUp start={0} end={311159} duration={4} />+
               </h3>
               <h3 className="text-xl mt-2 leading-tight font-bold">Beneficiaries</h3>
             </div>

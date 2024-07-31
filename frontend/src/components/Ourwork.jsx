@@ -27,7 +27,7 @@ const Ourwork = () => {
     const { ref: ngoRef, inView: ngoInView } = useInView({ triggerOnce: true, threshold: 0.1 });
     return (
         <div>
-            <div className=" w-full flex justify-center font-bold text-5xl bg-gradient-to-r from-red-300 to-orange-400 py-4 ">
+            <div className=" w-full flex justify-center font-bold text-5xl bg-orange-200 py-4 ">
                 OUR GOALS
             </div>
             <section className="flex items-center p-10 min-h-96 bg-green-100 ">

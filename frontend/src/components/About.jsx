@@ -22,7 +22,7 @@ const About = () => {
         <div>
             {/* Our Vision Section */}
             <section className="flex items-center bg-blue-50 py-16 px-6 min-h-screen">
-                <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
+                <div className="container mx-auto ml-5 flex flex-col md:flex-row items-center justify-center">
                     <motion.div 
                         className="md:w-1/2 text-left mb-8 md:mb-0"
                         variants={fadeIn}
