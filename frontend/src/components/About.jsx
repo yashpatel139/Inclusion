@@ -179,7 +179,7 @@ const About = () => {
                             {[
                                 { name: "Manu Saini", title: "Full Stack Developer", image: "manu.jpeg" },
                                 { name: "Yash Patel", title: "Full Stack Developer", image: "yash.jpg" },
-                                { name: "Kunal Singh", title: "Full Stack Developer", image: "kunal.jpg" },
+                                { name: "Kunal Singh", title: "Full Stack Developer", image: "kunal1.jpg" },
                                 { name: "Bhoopendra Singh", title: "Full Stack Developer", image: "bhupi.jpg" },
                                 // Add more team members as needed
                             ].map((member, index) => (
