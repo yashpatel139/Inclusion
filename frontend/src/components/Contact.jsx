@@ -975,7 +975,7 @@ const schema = yup.object({
         </div>
   
         {/* Form Section */}
-        <div className="flex-grow w-full max-w-lg border-2 border-gray-500 rounded-lg p-6 shadow-lg bg-white bg-[#e6ebfe]">
+        <div className="flex-grow w-full max-w-lg border-2 border-gray-500 rounded-lg p-6 shadow-lg bg-[#e6ebfe]">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
